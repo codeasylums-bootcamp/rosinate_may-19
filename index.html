@@ -3,6 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Anton&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/data.js"></script>
@@ -10,41 +13,90 @@
     <title>Hackathon</title>
   </head>
   <body>
+      <header>
+          <i class="fas fa-info-circle" style="font-size:2.5rem"></i>
+        <h1 class="text-white headerh1">STATE DETAILS</h1>
+      </header>
+      <div class="inputs">
+          <div class="p1"><marquee scroll="left"><p style="line-height: 3">This Website let's you compare various states on some parameters and will give you complete Hospital details of any State!</p></marquee></div> 
+          <div style="height:40px; text-align:center;background-color:bisque;margin-bottom:15px;"><h2>Enter the State Names for comparison on various parameters</h2></div>
+          <div class="button1">   
         <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Enter 1st state" aria-label="Recipient's username" aria-describedby="button-addon2" id="state">
+                <input type="text" class="form-control input1" placeholder="Enter 1st state" aria-label="Recipient's username" aria-describedby="button-addon2" id="state">
                 <div class="input-group-append">
-                  <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="f()">Button</button>
+                  <button class="btn btn-secondary toggle-graph" data-graph-index="2" type="button" id="button-addon2" onclick="g(); f()">Click!</button>
                 </div>
         </div>
         <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Enter 2nd state" aria-label="Recipient's username" aria-describedby="button-addon2" id="state1">
+                <input type="text" class="form-control input1" placeholder="Enter 2nd state" aria-label="Recipient's username" aria-describedby="button-addon2" id="state1">
                 <div class="input-group-append">
-                  <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="f2()">Button</button>
+                  <button class="btn btn-secondary" type="button" id="button-addon2" onclick="f2(); g2()">Click</button>
                 </div>
         </div>
         <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Enter 2nd state" aria-label="Recipient's username" aria-describedby="button-addon2" id="state2">
+                <input type="text" class="form-control input1" placeholder="Enter 3rd state" aria-label="Recipient's username" aria-describedby="button-addon2" id="state2">
                 <div class="input-group-append">
-                  <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="f3()">Button</button>
+                  <button class="btn btn-secondary" type="button" id="button-addon2" onclick="f3(); g3()">Click</button>
                 </div>
         </div>
         <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Enter 2nd state" aria-label="Recipient's username" aria-describedby="button-addon2" id="state3">
+                <input type="text" class="form-control input1" placeholder="Enter 4th state" aria-label="Recipient's username" aria-describedby="button-addon2" id="state3">
                 <div class="input-group-append">
-                  <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="f4()">Button</button>
+                  <button class="btn btn-secondary" type="button" id="button-addon2" onclick="f4(); g4()">Click</button>
                 </div>
         </div>
         <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Enter 2nd state" aria-label="Recipient's username" aria-describedby="button-addon2" id="state4">
+                <input type="text" class="form-control input1" placeholder="Enter 5th state" aria-label="Recipient's username" aria-describedby="button-addon2" id="state4">
                 <div class="input-group-append">
-                  <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="f5()">Button</button>
+                  <button class="btn btn-secondary" type="button" id="button-addon2" onclick="f5(); g5()">Click</button>
                 </div>
         </div>
+        </div>
+      </div>
+        <div  id="graph1" style="display:none ;margin-bottom:50px"><div id="container1" style="min-width: 310px; height: 400px; margin: 0 auto;"></div></div>
+        <div id="graph2" style="display:none"><div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div></div>
+        <div style="height:40px; text-align:center;background-color:bisque;margin-bottom:15px; margin-top:50px;"><h2>Enter state name for complete hospital information</h2></div>
+        <div class="table1">
+            <div class="button1">
+                <div class="input-group mb-3">
+                        <input type="text" class="form-control input1" placeholder="Enter state for hospital details" aria-label="Recipient's username" aria-describedby="button-addon2" id="host">
+                        <div class="input-group-append">
+                          <button class="btn btn-secondary" type="button" id="button-addon2" onclick="tablef()">Click</button>
+                        </div>
+                </div>
+            </div>
+                <div class="table11">
+                    <table border="1px" id="mytable" style="display: none">
+                        <tr>
+                            <td><b><i>Hospital Name</i></b></td>
+                            <td><b><i>Address</i></b></td>
+                            <td><b><i>PinCode</i></b></td>
+                            <td><b><i>Mobile</i></b></td>
+                            <td><b><i>Website</i></b></td>
+                        </tr>
 
-        <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                    </table>
+                </div>
+        </div>
+        <div id="foot">
+            <footer >
+                <div>
+                        <ul class="ul1" style="list-style:none" >
+                            <li><a href="https://www.facebook.com/narendramodi/" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="https://twitter.com/narendramodi?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                            </ul>
+                </div>
+                <div>
+                        <ul class="ul2" style="list-style:none" >
+                                <li><a href="tel:1800 11 6346" target="_blank">Tollfree Number</a></li>
+                                <li><a href="mailto:narendramodi@gmail.com" target="_blank">Mail</a></li>
+                                </ul>
+                </div>
+            </footer>
+        </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
-<script src="app.js"></script>
+<script src="app2.js"></script>
 </html>
